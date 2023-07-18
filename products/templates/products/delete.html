@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block Title %} Supprimer {% endblock Title %}
+{% block content %}
+<div class="row d-flex justify-content-center">
+        <div class="card mt-3" style="width: 300px;">
+            <img src="{{ produits.barcode.url }}" class="card-img-top" alt="illustration">
+            <div class="card-body">
+                <h5 class="card-title">Suppression Produit</h5>
+                <div class="card-text">
+                  <p>Voulez-vous supprimer {{ produits.name }} </p>
+                    <form class="form" action="" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <input class="btn btn-primary my-3" type="submit" value="Supprimer">
+                        <button class="btn btn-secondary my-3" ><a class="text-light" href="{% url 'list' %}">Retour</a></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
