@@ -5,7 +5,6 @@
 {% block content %}
 
 
-
 <div class="container-fluid">
     <h3  class="h2 text-center">
         Barcodes créés
@@ -28,12 +27,17 @@
                     <th scope="row">{{ element.name }}</th>
                     <td> {{ element.manufacturer_id}} </td>
                     <td> {{ element.number_id}} </td>
-
                     <td> <a href="{{ element.barcode.url }}"><img src="{{ element.barcode.url }}" alt="barcode" style="width:250px"></a></td>
                     <td><button type="button" class="btn btn-primary btn-sm" value="">
-                        <a class="text-light" href="{% url 'update' element.pk %}">Modifier</a></button>
+                            <a class="text-light" href="{% url 'update' element.pk %}">Modifier</a>
+                        </button>
                         <button type="button" class="btn btn-danger btn-sm" value="">
-                            <a class="text-light" href="{% url 'delete' element.pk %}">Supprimer</a></button></td>
+                            <a class="text-light" href="{% url 'delete' element.pk %}">Supprimer</a>
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm">
+                            <a class="text-light" href="{{ element.barcode.url }}" download><img src="{% static 'images/download.svg' %}" alt=""></a>
+                        </button>
+                    </td>                   
                 </tr>
                 {% endfor %}
                 <tr>

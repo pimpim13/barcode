@@ -4,6 +4,8 @@ from barcode.writer import ImageWriter
 from io import BytesIO
 from django.core.files import File
 from django.core.validators import RegexValidator
+from barcode_gen import settings
+import os
 
 
 class Product(models.Model):
@@ -30,4 +32,7 @@ class Product(models.Model):
 
         return super().save(*args, **kwargs)
 
+    def delete(self, *args, **kwargs):
+        os.remove(settings.MEDIA_ROOT / str(self.barcode))
+        return super(Product, self).delete(*args, **kwargs)
 

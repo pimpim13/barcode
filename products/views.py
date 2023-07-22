@@ -4,6 +4,7 @@ from django.views.generic import ListView, CreateView, DetailView, DeleteView, U
 
 from .forms import ProductForm
 from .models import Product
+import os
 
 
 def create(request):
@@ -49,6 +50,7 @@ class ProductDeleteView(DeleteView):
     context_object_name = 'produits'
     template_name = 'products/delete.html'
     success_url = reverse_lazy("list")
+
 
 
 class ProductUpdateView(UpdateView):
