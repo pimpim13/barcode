@@ -34,5 +34,6 @@ class Product(models.Model):
 
     def delete(self, *args, **kwargs):
         os.remove(settings.MEDIA_ROOT / str(self.barcode))
+
         return super(Product, self).delete(*args, **kwargs)
 
